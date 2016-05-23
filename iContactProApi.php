@@ -209,7 +209,7 @@ class iContactProApi {
 		}
 
 		// Make the call
-		echo("/a/{$this->getCompanyId()}/c/{$this->getProfileId()}/contacts");
+		//echo("/a/{$this->getCompanyId()}/c/{$this->getProfileId()}/contacts");
 		$aContacts = $this->makeCall("/a/{$this->getCompanyId()}/c/{$this->getProfileId()}/contacts", 'POST', array($aContact), 'contacts');
 		// Return the contact
 		return $aContacts[0];
@@ -794,9 +794,9 @@ class iContactProApi {
 			'Accept:  application/json',
 			'Content-type:  application/json',
 			'Api-Version:  ' . (defined('ICP_APIVERSION')       ? constant('ICP_APIVERSION') : '2.2'),
-			'Api-AppId:  '   . (!empty($this->aConfig['appId'])       ? $this->aConfig['appId']         : defined('ICP_APPID') ? constant('ICP_APPID') : ''),
-			'Api-Username:  '. (!empty($this->aConfig['apiUsername']) ? $this->aConfig['apiUsername']   : defined('ICP_APIUSERNAME') ? constant('ICP_APIUSERNAME') : ''),
-			'Api-Password:  '. (!empty($this->aConfig['apiPassword']) ? $this->aConfig['apiPassword']   : defined('ICP_APIPASSWORD') ? constant('ICP_APIPASSWORD') : '')
+			'Api-AppId:  '   . (!empty($this->aConfig['appId'])       ? $this->aConfig['appId']         : (defined('ICP_APPID') ? constant('ICP_APPID') : '')),
+			'Api-Username:  '. (!empty($this->aConfig['apiUsername']) ? $this->aConfig['apiUsername']   : (defined('ICP_APIUSERNAME') ? constant('ICP_APIUSERNAME') : '')),
+			'Api-Password:  '. (!empty($this->aConfig['apiPassword']) ? $this->aConfig['apiPassword']   : (defined('ICP_APIPASSWORD') ? constant('ICP_APIPASSWORD') : ''))
 		);
 	}
 
