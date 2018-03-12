@@ -603,7 +603,7 @@ class iContactProApi {
 		// Make sure the contact isn't empty
 		if (!empty($aContact)) {
 			// Make the call
-			$oContact = $this->makeCall("/a/{$this->getCompanyId()}/c/{$this->getProfileId()}/contacts/{$iContactId}", 'POST', array($aContact), 'contact');
+			$oContact = $this->makeCall("/a/{$this->getCompanyId()}/c/{$this->getProfileId()}/contacts/{$iContactId}", 'POST', $aContact, 'contact');
 			// Return the contact
 			return $oContact;
 		}
